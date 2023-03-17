@@ -73,7 +73,7 @@ def test_on_scene(scene_name):
     for camera_name in get_camera_names(scene_path):
         print(camera_name)
         img_paths = glob.glob(f'{scene_path}/{camera_name}/rgb/*.png')
-        results = test_imgs(img_paths, f'{scene_path}/{camera_name}/hand_pose/d2', visualize=True)
+        results = test_imgs(img_paths, f'{scene_path}/{camera_name}/hand_pose/d2', visualize=False)
 
         table = np.empty(0, dtype=[('scene_name', 'U20'),
                                  ('camera_name', 'U22'),
@@ -90,12 +90,31 @@ def test_on_scene(scene_name):
         file_path = f'{scene_path}/{camera_name}/hand_pose/d2/detections.csv'
         df.to_csv(file_path, index=False)
 
-        png2video(f'{scene_path}/{camera_name}/hand_pose/d2', frame_rate=30)
-
-    combine_videos(sorted(glob.glob(f'{scene_path}/camera*/hand_pose/d2/video.mp4')),
-                   f'{scene_path}/hand_pose/d2/video.mp4')
+    #     png2video(f'{scene_path}/{camera_name}/hand_pose/d2', frame_rate=30)
+    #
+    # combine_videos(sorted(glob.glob(f'{scene_path}/camera*/hand_pose/d2/video.mp4')),
+    #                f'{scene_path}/hand_pose/d2/video.mp4')
 
 
 if __name__ == '__main__':
-    scene_name = 'scene_2210232307_01'
-    test_on_scene(scene_name)
+    # scene_name = 'scene_2210232307_01'
+    scene_names = ['scene_230310200800',
+                   'scene_230313171600',
+                   'scene_230313171700',
+                   'scene_230313171800',
+                   'scene_230313171900',
+                   'scene_230313172000',
+                   'scene_230313172100',
+                   'scene_230313172200',
+                   'scene_230313172537',
+                   'scene_230313172613',
+                   'scene_230313172659',
+                   'scene_230313172735',
+                   'scene_230313172808',
+                   'scene_230313172840',
+                   'scene_230313172915',
+                   'scene_230313172946',
+                   'scene_230313173036',
+                   'scene_230313173113']
+    for scene_name in scene_names:
+        test_on_scene(scene_name)
