@@ -29,7 +29,7 @@ from detectron2.data.datasets import register_coco_instances
 from detectron2.data.datasets.pascal_voc import register_pascal_voc
 
 from dataset_tools.config import dataset_path
-from dataset_tools.loaders import get_camera_names
+from dataset_tools.utils import get_camera_names
 from dataset_tools.view.videos import png2video, combine_videos
 
 _datasets_root = "datasets"
